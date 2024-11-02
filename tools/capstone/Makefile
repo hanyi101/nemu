@@ -20,7 +20,7 @@ endif
 
 CAPSTONE = $(REPO_PATH)/libcapstone.so.5
 $(CAPSTONE):
-	cd $(REPO_PATH) && CAPSTONE_ARCHS="x86|mips|riscv|loongarch" bash make.sh
+	cd $(REPO_PATH) && CAPSTONE_ARCHS="x86|mips|riscv|loongarch" bash make.sh && if [ -e "libcapstone.5.dylib" ]; then ln -sf "libcapstone.5.dylib" "libcapstone.so.5"; fi
 
 clean:
 	$(MAKE) -C $(REPO_PATH) clean
